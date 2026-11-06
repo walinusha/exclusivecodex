@@ -1,3 +1,9 @@
+export const legalEntity = {
+  name: "Exclusive Holdings (Pvt) Ltd",
+  brand: "ExclusiveCodeX",
+  website: "https://exclusivecodex.com",
+} as const;
+
 export const navLinks = [
   { href: "/services", label: "Services" },
   { href: "/platform", label: "Platform" },
@@ -5,6 +11,11 @@ export const navLinks = [
   { href: "/industries", label: "Industries" },
   { href: "/studio", label: "Studio" },
   { href: "/contact", label: "Contact" },
+] as const;
+
+export const legalLinks = [
+  { href: "/legal", label: "Legal" },
+  { href: "/privacy", label: "Privacy" },
 ] as const;
 
 export const positioning = {
@@ -815,6 +826,7 @@ export const studioStory = {
   title: "An AI-powered software and automation company.",
   lead: "ExclusiveCodeX builds intelligent business systems, SaaS platforms, AI agents, web and mobile applications, APIs, and products other businesses can subscribe to or white-label.",
   body: [
+    `${legalEntity.brand} is the software brand of ${legalEntity.name}. exclusivecodex.com is the public website of ${legalEntity.name}.`,
     "The flagship direction is AI-powered business management software, with custom cloud and web systems as the delivery engine. Fit scores stay honest: we lead with SaaS, cloud, web, AI, integrations, white-label, and vertical systems.",
     "Think. Build. Beyond. is the loop. We map the advantage, ship the product, then compound it through agents, partners, and new surfaces — including a shared core that can launch many vertical products.",
   ],

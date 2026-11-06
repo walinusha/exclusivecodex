@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { navLinks } from "@/lib/content";
+import { legalEntity, legalLinks, navLinks } from "@/lib/content";
 
 export function Footer() {
   return (
@@ -23,6 +23,10 @@ export function Footer() {
           <p className="mt-3 max-w-xs text-sm text-zinc-500">
             Think. Build. Beyond. AI-driven software for products that last.
           </p>
+          <p className="mt-3 max-w-sm text-xs leading-relaxed text-zinc-600">
+            ExclusiveCodeX is a product of {legalEntity.name}. This website is the public site of{" "}
+            {legalEntity.name}.
+          </p>
         </div>
         <nav className="flex flex-wrap gap-x-5 gap-y-3 text-sm text-zinc-400">
           {navLinks.map((link) => (
@@ -32,9 +36,20 @@ export function Footer() {
           ))}
         </nav>
       </div>
-      <div className="mx-auto mt-10 flex max-w-6xl flex-col gap-2 border-t border-white/6 pt-6 text-xs text-zinc-600 sm:flex-row sm:justify-between">
-        <p>© {new Date().getFullYear()} ExclusiveCodeX. All rights reserved.</p>
-        <p className="tracking-[0.18em] uppercase sm:tracking-[0.28em]">Think | Build | Beyond</p>
+      <div className="mx-auto mt-10 flex max-w-6xl flex-col gap-3 border-t border-white/6 pt-6 text-xs text-zinc-600 sm:flex-row sm:items-end sm:justify-between">
+        <div className="space-y-1">
+          <p>
+            © {new Date().getFullYear()} {legalEntity.name}. All rights reserved.
+          </p>
+          <nav className="flex flex-wrap gap-x-4 gap-y-1">
+            {legalLinks.map((link) => (
+              <Link key={link.href} href={link.href} className="min-h-11 py-2 hover:text-zinc-300">
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+        <p className="tracking-[0.18em] uppercase sm:pb-2 sm:tracking-[0.28em]">Think | Build | Beyond</p>
       </div>
     </footer>
   );

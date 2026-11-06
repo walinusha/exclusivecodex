@@ -3,6 +3,7 @@ import { Geist_Mono, Outfit } from "next/font/google";
 import { Background } from "@/components/Background";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { legalEntity } from "@/lib/content";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -34,13 +35,14 @@ export const metadata: Metadata = {
     "AI-powered software and automation. Intelligent business systems, SaaS, AI agents, web and mobile, APIs, and products.",
   keywords: [
     "ExclusiveCodeX",
+    "Exclusive Holdings",
     "SaaS",
     "AI applications",
     "cloud applications",
     "white-label software",
     "web applications",
   ],
-  authors: [{ name: "ExclusiveCodeX" }],
+  authors: [{ name: legalEntity.name, url: legalEntity.website }],
   icons: {
     icon: "/logo-mark.png",
     apple: "/logo-mark.png",
@@ -54,6 +56,20 @@ export const metadata: Metadata = {
   },
 };
 
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: legalEntity.name,
+  legalName: legalEntity.name,
+  alternateName: [legalEntity.brand, "Exclusive Holdings (Pvt)"],
+  url: legalEntity.website,
+  brand: {
+    "@type": "Brand",
+    name: legalEntity.brand,
+    url: legalEntity.website,
+  },
+};
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
@@ -61,6 +77,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${outfit.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-bg font-sans text-zinc-100">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
         <Background />
         <Header />
         <div className="flex-1 overflow-x-hidden">{children}</div>
